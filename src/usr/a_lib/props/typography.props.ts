@@ -1,6 +1,15 @@
 import PropTypes from 'prop-types';
 
-export const TypographyTypes = {
+export interface TypographyProps {
+  fontSize?: number;
+  fontStyle?: '' | 'normal' | 'italic';
+  fontWeight?: '' | 'fontWeightLight' | 'fontWeightRegular' | 'fontWeightMedium' | 'fontWeightBold';
+  letterSpacing?: string;
+  lineHeight?: string;
+  textAlign?: '' | 'start' | 'end' | 'left' | 'right' | 'center' | 'justify' | 'match-parent';
+}
+
+export const TypographyTypes: PropTypes.InferProps<TypographyProps> = {
   /**
    * The font-size CSS property sets the size of the font.
    */

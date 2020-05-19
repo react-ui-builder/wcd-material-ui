@@ -45,7 +45,7 @@ const hueMap: {[id: string]: any} = {
   'blueGrey': blueGrey
 };
 
-export default function (colorHue: string, colorShade: number, theme: Theme) {
+export default function (colorHue: string, colorShade: string, theme?: Theme) {
   let foundColor: any = null;
   if (colorHue) {
     foundColor = hueMap[colorHue];
