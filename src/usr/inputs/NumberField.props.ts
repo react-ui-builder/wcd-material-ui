@@ -108,7 +108,8 @@ export const NumberFieldTypes: PropTypes.InferProps<NumberFieldProps> = {
         endAdornment: PropTypes.node,
     }),
     /*
-     * Triggered when the value is changed in the input control
+     * Triggered when the value is changed in the input control.
+     * Use handler: `handleOnChange(value: number)`
      */
     onChange: PropTypes.func,
 };
