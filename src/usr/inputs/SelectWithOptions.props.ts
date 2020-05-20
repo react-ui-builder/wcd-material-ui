@@ -131,7 +131,7 @@ export const SelectWithOptionsTypes: PropTypes.InferProps<SelectWithOptionsProps
         disabled: PropTypes.bool,
     })),
     /*
-     * Submits the entered value
+     * Submits the entered value. Signature: `(value: string) => void;`
      *
      */
     onChange: PropTypes.func

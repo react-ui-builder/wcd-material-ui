@@ -109,7 +109,7 @@ export const NumberFieldTypes: PropTypes.InferProps<NumberFieldProps> = {
     }),
     /*
      * Triggered when the value is changed in the input control.
-     * Use handler: `handleOnChange(value: number)`
+     * Signature: `(value: number) => void;`
      */
     onChange: PropTypes.func,
 };
