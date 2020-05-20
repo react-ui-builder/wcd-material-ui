@@ -48,7 +48,8 @@ export const FloatingActionButtonTypes: PropTypes.InferProps<FloatingActionButto
      */
     loading: PropTypes.bool,
     /*
-     * Triggered when the user click on the button
+     * Triggered when the user click on the button.
+     * Signature: `() => void;`
      */
     onClick: PropTypes.func
 };

@@ -23,7 +23,7 @@ class FloatingActionButton extends React.Component<FloatingActionButtonProps, an
   static propTypes: PropTypes.InferProps<FloatingActionButtonProps>;
   static defaultProps: PropTypes.InferProps<FloatingActionButtonProps>;
 
-  handleButtonClick = (e: React.MouseEvent) => {
+  handleButtonClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e) {
       e.stopPropagation();
       e.preventDefault();
@@ -36,7 +36,7 @@ class FloatingActionButton extends React.Component<FloatingActionButtonProps, an
   render() {
     const { classes, label, color, variant, disabled, icon, size, href, loading } = this.props;
     const muiButtonProps: any = pickWithValues({variant, color, disabled, size, href});
-    let labelElement = null;
+    let labelElement: JSX.Element | null = null;
     if (label) {
       if (icon) {
         labelElement = <span className={classes.label}>{label}</span>;

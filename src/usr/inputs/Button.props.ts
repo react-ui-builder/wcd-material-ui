@@ -20,7 +20,7 @@ export interface ButtonProps {
         selected?: boolean;
     }[];
     onClick: () => void;
-    onMenuItemClick: (options: { id?: string, href?: string }) => void
+    onMenuItemClick: (options: { id?: string, href?: string }) => void;
 }
 
 export const ButtonTypes: PropTypes.InferProps<ButtonProps> = {
@@ -90,15 +90,14 @@ export const ButtonTypes: PropTypes.InferProps<ButtonProps> = {
         selected: PropTypes.bool,
     })),
     /*
-     * Triggered when the user click on the button
-     * * No arguments
+     * Triggered when the user click on the button.
+     * Signature: `() => void;`
      *
      */
     onClick: PropTypes.func,
     /*
      * Triggered when the user click on the menu item
-     * * Arguments:
-     *    * options: {id: string, url: string}
+     * Signature: `(options: { id?: string, href?: string }) => void`
      */
     onMenuItemClick: PropTypes.func
 };

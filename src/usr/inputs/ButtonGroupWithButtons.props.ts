@@ -67,7 +67,8 @@ export const ButtonGroupWithButtonsTypes: PropTypes.InferProps<ButtonGroupWithBu
      */
     fullWidth: PropTypes.bool,
     /*
-     * Triggered when the user clicks on one of the buttons in the group
+     * Triggered when the user clicks on one of the buttons in the group.
+     * Signature: `(buttonProps: { id?: string, href?: string }) => void;`
      *
      */
     onClick: PropTypes.func

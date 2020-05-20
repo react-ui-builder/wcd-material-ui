@@ -64,7 +64,7 @@ export const RadioGroupWithItemsTypes: PropTypes.InferProps<RadioGroupWithItemsP
      */
     size: PropTypes.oneOf(['', 'medium', 'small']),
     /*
-     * Submits the entered value
+     * Submits the entered value. Signature: `(value?: string) => void;`
      *
      */
     onChange: PropTypes.func

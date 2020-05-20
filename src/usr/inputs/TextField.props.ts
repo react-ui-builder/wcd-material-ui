@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
-export interface NumberFieldProps {
-    value?: number;
+export interface TextFieldProps {
+    value?: string;
     disabled?: boolean;
     error?: boolean;
     helperText?: string;
@@ -13,6 +13,7 @@ export interface NumberFieldProps {
         autoComplete?: string;
         autoFocus?: boolean;
         id?: string;
+        type?: 'date' | 'datetime-local' | 'email' | 'password' | 'search' | 'text' | 'time';
     };
     formControl?: {
         color?: '' | 'primary' | 'secondary';
@@ -23,14 +24,19 @@ export interface NumberFieldProps {
         startAdornment?: ReactNode;
         endAdornment?: ReactNode;
     };
-    onChange?: (value: number) => void;
+    multilineControl?: {
+        multiline?: boolean;
+        rows?: number;
+        rowsMax?: number;
+    };
+    onChange?: (value?: string) => void;
 }
 
-export const NumberFieldTypes: PropTypes.InferProps<NumberFieldProps> = {
+export const TextFieldTypes: PropTypes.InferProps<TextFieldProps> = {
     /**
      * The value of the input element.
      */
-    value: PropTypes.number,
+    value: PropTypes.string,
     /**
      * If true, the input element will be disabled.
      */
@@ -73,6 +79,10 @@ export const NumberFieldTypes: PropTypes.InferProps<NumberFieldProps> = {
          * Use this prop to make label and helperText accessible for screen readers.
          */
         id: PropTypes.string,
+        /**
+         * The value of input type attribute
+         */
+        type: PropTypes.oneOf(['date', 'datetime-local', 'email', 'password', 'search', 'text', 'time']),
     }),
     /**
      * Properties specific to the MUI form control
@@ -107,9 +117,26 @@ export const NumberFieldTypes: PropTypes.InferProps<NumberFieldProps> = {
          */
         endAdornment: PropTypes.node,
     }),
+    /**
+     * Properties for multiline control
+     */
+    multilineControl: PropTypes.shape({
+        /**
+         * If true, a textarea element will be rendered instead of an input.
+         */
+        multiline: PropTypes.bool,
+        /**
+         * Number of rows to display when multiline option is set to true.
+         */
+        rows: PropTypes.number,
+        /**
+         * Maximum number of rows to display when multiline option is set to true.
+         */
+        rowsMax: PropTypes.number,
+    }),
     /*
-     * Triggered when the value is changed in the input control.
-     * Signature: `(value: number) => void;`
+     * Triggered when the text is changed in the input control
+     * Signature: `(value?: string) => void;`
      */
     onChange: PropTypes.func,
 };

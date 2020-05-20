@@ -63,7 +63,6 @@ class Avatar extends React.Component<AvatarProps, any> {
         const {
             alt,
             children,
-            classes,
             defLetter,
             imgProps,
             src,

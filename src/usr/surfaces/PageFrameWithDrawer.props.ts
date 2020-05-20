@@ -204,7 +204,8 @@ export const PageFrameWithDrawerTypes: PropTypes.InferProps<PageFrameWithDrawerP
     hiddenElements: PropTypes.arrayOf(PropTypes.node),
 
     /**
-     *
+     * Triggered when the user toggle drawer.
+     * Signature: `() => void`
      */
     onToggleLeftArea: PropTypes.func,
 };

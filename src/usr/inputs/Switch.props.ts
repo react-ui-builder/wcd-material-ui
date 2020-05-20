@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export interface CheckboxProps {
+export interface SwitchProps {
     checked?: boolean;
     disabled?: boolean;
     label?: string;
@@ -8,12 +8,12 @@ export interface CheckboxProps {
     value?: any;
     id?: string;
     color?: '' | 'default' | 'primary' | 'secondary';
-    indeterminate?: boolean;
     required?: boolean;
-    onChange: (options: { checked?: boolean, value?: any, id?: string }) => void;
+    size?: '' | 'medium' | 'small';
+    onChange: (options: { checked?: boolean, value?: any }) => void;
 }
 
-export const CheckboxTypes: PropTypes.InferProps<CheckboxProps> = {
+export const SwitchTypes: PropTypes.InferProps<SwitchProps> = {
     /**
      * If true, the component appears selected.
      */
@@ -43,18 +43,16 @@ export const CheckboxTypes: PropTypes.InferProps<CheckboxProps> = {
      */
     color: PropTypes.oneOf(['', 'default', 'primary', 'secondary']),
     /**
-     * If true, the component appears indeterminate.
-     * This does not set the native input element to indeterminate due to inconsistent behavior across browsers.
-     * However, we set a data-indeterminate attribute on the input.
-     */
-    indeterminate: PropTypes.bool,
-    /**
      * If true, the input element will be required.
      */
     required: PropTypes.bool,
+    /**
+     * The size of the switch. small is equivalent to the dense switch styling.
+     */
+    size: PropTypes.oneOf(['', 'medium', 'small']),
     /*
      * Fired when the state is changed.
-     * Signature: `(options: { checked?: boolean, value?: any, id?: string }) => void;`
+     * Signature: `(options: { checked?: boolean, value?: any }) => void;`
      */
     onChange: PropTypes.func
 };

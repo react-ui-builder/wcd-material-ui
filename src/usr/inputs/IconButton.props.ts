@@ -40,7 +40,8 @@ export const IconButtonTypes: PropTypes.InferProps<IconButtonProps> = {
    */
   loading: PropTypes.bool,
   /*
-   * Triggered when the user click on the button
+   * Triggered when the user click on the button.
+   * Signature: `() => void;`
    */
   onClick: PropTypes.func
 };

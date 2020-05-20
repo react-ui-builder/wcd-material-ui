@@ -7,7 +7,7 @@ import pickWithValues from '../a_lib/utils/pickWithValues';
 import ButtonCircularProgress from '../a_lib/components/ButtonCircularProgress';
 import { ButtonProps, ButtonTypes } from './Button.props';
 
-const useStyles: any = makeStyles((theme: Theme) => ({
+const useStyles: any = makeStyles(() => ({
   button: {
     position: 'relative',
   },
@@ -15,8 +15,10 @@ const useStyles: any = makeStyles((theme: Theme) => ({
 
 /**
  * Buttons allow users to take actions, and make choices, with a single tap.
+ *
+ * This button component lets you add a menu popup.
  */
-const Button = (props: ButtonProps) => {
+const Button = (props: ButtonProps): JSX.Element => {
   const {
     label,
     color,
@@ -34,7 +36,7 @@ const Button = (props: ButtonProps) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<any>(null);
 
-  const handleButtonClick = (e: React.MouseEvent) => {
+  const handleButtonClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e) {
       e.stopPropagation();
       e.preventDefault();
@@ -44,11 +46,11 @@ const Button = (props: ButtonProps) => {
     }
   };
 
-  const handleOpenMenu = (e: React.MouseEvent) => {
+  const handleOpenMenu = (e: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(e.currentTarget);
   };
 
-  const handleMenuItemClick = (id?: string, href?: string) => (e: React.MouseEvent) => {
+  const handleMenuItemClick = (id?: string, href?: string) => (e: React.MouseEvent<HTMLElement>) => {
     if (e) {
       e.stopPropagation();
       e.preventDefault();
@@ -63,7 +65,7 @@ const Button = (props: ButtonProps) => {
     setAnchorEl(null);
   };
 
-  let menuItems = [];
+  let menuItems: JSX.Element[] = [];
   if (menu && menu.length > 0) {
     for (let i = 0; i < menu.length; i++) {
       if (menu[i]) {
@@ -81,7 +83,7 @@ const Button = (props: ButtonProps) => {
       }
     }
   }
-  const muiButtonProps = pickWithValues({ variant, color, disabled, size, fullWidth, href });
+  const muiButtonProps: any = pickWithValues({ variant, color, disabled, size, fullWidth, href });
   if (startIcon) {
     muiButtonProps.startIcon = startIcon;
   }
@@ -91,7 +93,7 @@ const Button = (props: ButtonProps) => {
   if (loading) {
     muiButtonProps.disabled = true;
   }
-  const buttonElement = (
+  const buttonElement: JSX.Element = (
     <ButtonMUI
       className={classes.button}
       {...muiButtonProps}
