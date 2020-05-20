@@ -22,15 +22,13 @@ theme = responsiveFontSizes(theme);
 function render() {
     getDemoFiles({ schema }).then(({ schema }: { schema: any }) => {
         ReactDOM.render(
-            <React.StrictMode>
-                <ThemeProvider theme={theme}>
-                    <Application
-                        schema={schema}
-                        userComponents={userComponents}
-                        userFunctions={userFunctions}
-                    />
-                </ThemeProvider>
-            </React.StrictMode>,
+            <ThemeProvider theme={theme}>
+                <Application
+                    schema={schema}
+                    userComponents={userComponents}
+                    userFunctions={userFunctions}
+                />
+            </ThemeProvider>,
             document.getElementById('root')
         );
     });
@@ -39,17 +37,15 @@ function render() {
 if (process.env.NODE_ENV !== 'production') {
     const packageJson = require('../package.json');
     ReactDOM.render(
-        <React.StrictMode>
-            <ThemeProvider theme={theme}>
-                <Application
-                    name={packageJson.name}
-                    version={packageJson.version}
-                    schema={schema}
-                    userComponents={userComponents}
-                    userFunctions={userFunctions}
-                />
-            </ThemeProvider>
-        </React.StrictMode>,
+        <ThemeProvider theme={theme}>
+            <Application
+                name={packageJson.name}
+                version={packageJson.version}
+                schema={schema}
+                userComponents={userComponents}
+                userFunctions={userFunctions}
+            />
+        </ThemeProvider>,
         document.getElementById('root')
     );
 } else {

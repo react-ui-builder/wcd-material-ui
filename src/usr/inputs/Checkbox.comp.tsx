@@ -13,8 +13,8 @@ class Checkbox extends React.Component<CheckboxProps, any> {
   static propTypes: PropTypes.InferProps<CheckboxProps>;
   static defaultProps: PropTypes.InferProps<CheckboxProps>;
 
-  handleChange = (e: React.MouseEvent) => {
-    const checked = (e.currentTarget as any).checked;
+  handleChange = (e: React.MouseEvent<HTMLInputElement>) => {
+    const checked = e.currentTarget.checked;
     const { value, id } = this.props;
     this.props.onChange({ checked, value, id });
   };
@@ -22,8 +22,8 @@ class Checkbox extends React.Component<CheckboxProps, any> {
   render() {
     const { disabled, label, labelPlacement } = this.props;
     const { value, checked, id, color, indeterminate, required } = this.props;
-    const muiFormControlLabelProps = pickWithValues({ disabled, label, labelPlacement });
-    const muiCheckboxProps = pickWithValues({ value, checked, id, color, indeterminate, required });
+    const muiFormControlLabelProps: any = pickWithValues({ disabled, label, labelPlacement });
+    const muiCheckboxProps: any = pickWithValues({ value, checked, id, color, indeterminate, required });
     return (
       <FormControlLabelMUI
         control={

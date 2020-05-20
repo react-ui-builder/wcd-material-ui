@@ -15,10 +15,10 @@ const useStyles: any = makeStyles(() => ({
 /**
  * The ButtonGroup component can be used to group outlined (the default) or contained buttons.
  */
-const ButtonGroupWithButtons = (props: ButtonGroupWithButtonsProps) => {
+const ButtonGroupWithButtons = (props: ButtonGroupWithButtonsProps): JSX.Element => {
   const classes: any = useStyles();
 
-  const handleButtonClick = (buttonProps: { id?: string, href?: string }) => (e: React.MouseEvent) => {
+  const handleButtonClick = (buttonProps: { id?: string, href?: string }) => (e: React.MouseEvent<HTMLElement>) => {
     if (e) {
       e.stopPropagation();
       e.preventDefault();
@@ -30,9 +30,9 @@ const ButtonGroupWithButtons = (props: ButtonGroupWithButtonsProps) => {
 
   const { buttons, variant, size, fullWidth } = props;
 
-  const buttonsElements: ReactNode[] = [];
+  const buttonsElements: JSX.Element[] = [];
   if (buttons && buttons.length > 0) {
-    let muiButtonProps;
+    let muiButtonProps: any;
     for (let i = 0; i < buttons.length; i++) {
       const { id, loading, label, disabled, href, color, endIcon, startIcon } = buttons[i];
       muiButtonProps = pickWithValues({disabled, href, color});

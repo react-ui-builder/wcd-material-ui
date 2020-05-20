@@ -16,7 +16,7 @@ class IconButton extends React.Component<IconButtonProps, any> {
   static propTypes: PropTypes.InferProps<IconButtonProps>;
   static defaultProps: PropTypes.InferProps<IconButtonProps>;
 
-  handleButtonClick = (e: React.MouseEvent) => {
+  handleButtonClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e) {
       e.stopPropagation();
       e.preventDefault();

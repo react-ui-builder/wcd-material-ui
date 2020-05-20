@@ -46,22 +46,22 @@ class RadioGroupWithItems extends React.Component<RadioGroupWithItemsProps, Radi
     }
   }
 
-  handleChange = (e: React.MouseEvent) => {
+  handleChange = (e: React.MouseEvent<HTMLInputElement>) => {
     this.setState({
-      selectedValueLocal: (e.currentTarget as any).value,
+      selectedValueLocal: e.currentTarget.value,
     });
     if (this.props.onChange) {
-      this.props.onChange((e.currentTarget as any).value);
+      this.props.onChange(e.currentTarget.value);
     }
   };
 
   render () {
     const { classes, items, loading, row, labelPlacement, size } = this.props;
-    const radioElements = [];
+    const radioElements: JSX.Element[] = [];
     if (items && items.length > 0) {
-      let radioItem;
-      let muiRadioItemProps;
-      let muiRadioLabelProps;
+      let radioItem: any;
+      let muiRadioItemProps: any;
+      let muiRadioLabelProps: any;
       for (let i = 0; i < items.length; i++) {
         radioItem = items[i];
         if (radioItem) {
@@ -85,7 +85,7 @@ class RadioGroupWithItems extends React.Component<RadioGroupWithItemsProps, Radi
       }
     }
     const { selectedValueLocal: value } = this.state;
-    const muiRadioGroupProps = pickWithValues({ row, value });
+    const muiRadioGroupProps: any = pickWithValues({ row, value });
     return (
       <RadioGroupMUI
         aria-label={this.uniqueName}

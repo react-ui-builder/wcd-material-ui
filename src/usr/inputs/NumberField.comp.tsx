@@ -58,11 +58,11 @@ class NumberField extends React.Component<NumberFieldProps, NumberFieldState> {
     }
   };
 
-  handleChange = (e: React.MouseEvent) => {
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      localInputValue: (e.currentTarget as any).value
+      localInputValue: Number(e.currentTarget.value)
     });
-    this.debouncedChange((e.currentTarget as any).value);
+    this.debouncedChange(Number(e.currentTarget.value));
   };
 
   render() {

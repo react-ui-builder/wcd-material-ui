@@ -22,7 +22,7 @@ const progressCircleSizesMap: {[id: string]: number} = {
 };
 
 export interface InputCircularProgressProps {
-  size?: number;
+  size?: string;
 }
 
 const InputCircularProgress = (props: InputCircularProgressProps) => {
