@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@date-io/date-fns": "1.x",
     "@material-ui/core": "4.9.2",
     "@material-ui/icons": "4.9.1",
+    "@material-ui/pickers": "^3.2.10",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -16,6 +18,7 @@
     "@webcodesk/react-app-framework-demo": "2.0.28",
     "@webcodesk/webcodesk-srv": "2.0.3",
     "cross-env": "6.0.3",
+    "date-fns": "^2.14.0",
     "express": "4.17.1",
     "lodash": "4.17.15",
     "prop-types": "15.7.2",
