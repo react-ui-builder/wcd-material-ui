@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { Theme } from '@material-ui/core';
 import { ImgProps, ImgTypes } from 'usr/a_lib/props/img.props';
