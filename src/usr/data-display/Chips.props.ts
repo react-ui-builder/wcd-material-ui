@@ -1,8 +1,17 @@
+import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { Theme } from '@material-ui/core';
 
+export interface ChipAvatarProps {
+    alt?: string;
+    child?: ReactNode;
+    defLetter?: string;
+    src?: string;
+    variant?: 'circle' | 'rounded' | 'square';
+}
+
 export interface ChipProps {
-    avatar?: JSX.Element;
+    avatar?: ChipAvatarProps;
     color?: 'default' | 'primary' | 'secondary';
     disabled?: boolean;
     id?: string;
@@ -22,11 +31,34 @@ export interface ChipsProps {
     onDelete?: (id: string) => void;
 }
 
+export const ChipAvatarTypes: PropTypes.InferProps<ChipAvatarProps> = {
+    /**
+     * Used in combination with `src` or `srcSet` to provide an `alt` attribute for the rendered `img` element.
+     */
+    alt: PropTypes.string,
+    /**
+     * 	Used to render icon or text elements inside the Avatar if src is not set. This can be an element, or just a string.
+     */
+    child: PropTypes.node,
+    /**
+     * Default Letter
+     */
+    defLetter: PropTypes.string,
+    /**
+     * The `src` attribute for the `img` element.
+     */
+    src: PropTypes.string,
+    /**
+     * The shape of the avatar.
+     */
+    variant: PropTypes.oneOf(['circle', 'rounded', 'square']),
+};
+
 export const ChipTypes: PropTypes.InferProps<ChipProps> = {
     /**
      * Avatar element
      */
-    avatar: PropTypes.node,
+    avatar: PropTypes.shape(ChipAvatarTypes),
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */

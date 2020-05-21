@@ -1,8 +1,9 @@
 import React from 'react';
 import * as _ from "lodash";
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import Chip from '@material-ui/core/Chip';
-import {ChipsProps, ChipsTypes} from "./Chips.props";
+import AvatarMUI from '@material-ui/core/Avatar';
+import ChipMUI from '@material-ui/core/Chip';
+import { ChipsProps, ChipsTypes } from "./Chips.props";
 import pickWithValues from "../a_lib/utils/pickWithValues";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -19,13 +20,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const Chips = (props: ChipsProps): JSX.Element => {
-    const classes = useStyles();
+    const classes: any = useStyles();
 
     const {chipItems, chipsColor, chipsSize, chipsVariant, isChipsDisabled, isClickable, onDelete,
         allowDeleting, align} = props;
 
     const handleDelete = (id?: string) => () => {
-        console.info(`You clicked the delete icon of ${id}`);
         if (onDelete) {
             onDelete(id ? id : "");
         }
@@ -34,6 +34,7 @@ const Chips = (props: ChipsProps): JSX.Element => {
     const handleClick = () => {
         console.info('You clicked the Chip.');
     };
+
     let flexAlignment = null;
     switch (align) {
         case "center":
@@ -62,19 +63,39 @@ const Chips = (props: ChipsProps): JSX.Element => {
         clickable: isClickable,
     });
     if (chipItems && chipItems.length) {
+        let avatarElement: JSX.Element | null = null;
         _.forEach(chipItems, (chip, index) => {
             const {avatar, color, disabled, id, label} = chip;
-            let ownProps = pickWithValues({avatar, color, disabled, label});
+            let ownProps = pickWithValues({color, disabled, label});
             if (allowDeleting) {
                 ownProps.onDelete = handleDelete(id);
             }
+            const {alt, child, defLetter, src, variant } = avatar!;
+            if (src) {
+                avatarElement = (
+                    <AvatarMUI {...pickWithValues({alt, src, variant})} />
+                );
+            } else if (defLetter) {
+                avatarElement = (
+                    <AvatarMUI {...pickWithValues({alt, variant})}>
+                        {defLetter}
+                    </AvatarMUI>
+                );
+            } else {
+                avatarElement = (
+                    <AvatarMUI {...pickWithValues({alt, variant})}>
+                        {child}
+                    </AvatarMUI>
+                );
+            }
             chipsToRender.push(
-                <Chip
+                <ChipMUI
                     key={"" + id + index}
+                    avatar={avatarElement}
                     {...commonChipProps}
                     {...ownProps}
                 />
-            )
+            );
         })
     }
 

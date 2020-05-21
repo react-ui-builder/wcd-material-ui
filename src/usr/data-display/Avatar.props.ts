@@ -1,16 +1,16 @@
+import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { Theme } from '@material-ui/core';
 import { ImgProps, ImgTypes } from 'usr/a_lib/props/img.props';
 
 export interface AvatarProps {
-    alt?: string;
-    children?: string;
     classes?: any;
+    alt?: string;
+    child?: ReactNode;
     defLetter?: string;
     imgProps?: ImgProps;
     src?: string;
     variant?: 'circle' | 'rounded' | 'square';
-
     theme?: Theme;
 }
 
@@ -22,11 +22,7 @@ export const AvatarTypes: PropTypes.InferProps<AvatarProps> = {
     /**
      * 	Used to render icon or text elements inside the Avatar if src is not set. This can be an element, or just a string.
      */
-    children: PropTypes.string,
-    /**
-     * Override or extend the styles applied to the component.
-     */
-    classes: PropTypes.object,
+    child: PropTypes.node,
     /**
      * Default Letter
      */
