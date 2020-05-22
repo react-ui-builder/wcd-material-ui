@@ -28,7 +28,7 @@ class Avatar extends React.Component<AvatarProps, any> {
             src,
             variant,
         } = this.props;
-        const nonEmptyProps: any = pickWithValues({alt, imgProps, src, variant});
+        const nonEmptyProps: any = pickWithValues({ alt, imgProps, src, variant });
         if (src) {
             return (
                 <AvatarMUI {...nonEmptyProps} />

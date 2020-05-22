@@ -11,7 +11,7 @@ import { PositionsProps, PositionsTypes } from '../a_lib/props/positions.props';
 import { TypographyProps, TypographyTypes } from '../a_lib/props/typography.props';
 
 export interface BoxProps {
-  theme?: Theme;
+    theme?: Theme;
     borders?: BordersProps;
     display?: DisplayProps;
     palette?: {

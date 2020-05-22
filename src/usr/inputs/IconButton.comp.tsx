@@ -13,46 +13,46 @@ import { IconButtonProps, IconButtonTypes } from './IconButton.props';
  */
 class IconButton extends React.Component<IconButtonProps, any> {
 
-  static propTypes: PropTypes.InferProps<IconButtonProps>;
-  static defaultProps: PropTypes.InferProps<IconButtonProps>;
+    static propTypes: PropTypes.InferProps<IconButtonProps>;
+    static defaultProps: PropTypes.InferProps<IconButtonProps>;
 
-  handleButtonClick = (e: React.MouseEvent<HTMLElement>) => {
-    if (e) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
-    if (this.props.onClick) {
-      this.props.onClick();
-    }
-  };
+    handleButtonClick = (e: React.MouseEvent<HTMLElement>) => {
+        if (e) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+        if (this.props.onClick) {
+            this.props.onClick();
+        }
+    };
 
-  render() {
-    const { color, edge, disabled, icon, size, loading } = this.props;
-    const muiButtonProps: any = pickWithValues({color, edge, disabled, size});
-    if (loading) {
-      muiButtonProps.disabled = true;
+    render() {
+        const { color, edge, disabled, icon, size, loading } = this.props;
+        const muiButtonProps: any = pickWithValues({ color, edge, disabled, size });
+        if (loading) {
+            muiButtonProps.disabled = true;
+        }
+        return (
+            <IconButtonMUI
+                onClick={this.handleButtonClick}
+                {...muiButtonProps}
+            >
+                {icon}
+                {loading && (
+                    <ButtonCircularProgress size={size}/>
+                )}
+            </IconButtonMUI>
+        );
     }
-    return (
-      <IconButtonMUI
-        onClick={this.handleButtonClick}
-        {...muiButtonProps}
-      >
-        {icon}
-        {loading && (
-          <ButtonCircularProgress size={size} />
-        )}
-      </IconButtonMUI>
-    );
-  }
 }
 
 IconButton.propTypes = IconButtonTypes;
 
 IconButton.defaultProps = {
-  icon: <span/>,
-  onClick: () => {
-    console.info('IconButton.onClick is not set');
-  }
+    icon: <span/>,
+    onClick: () => {
+        console.info('IconButton.onClick is not set');
+    }
 };
 
 export default IconButton;

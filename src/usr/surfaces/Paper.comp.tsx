@@ -9,9 +9,9 @@ import findColor from '../a_lib/utils/colorMap';
 import { PaperProps, PaperTypes } from './Paper.props';
 
 const styles: any = () => ({
-  root: {
-    width: '100%'
-  }
+    root: {
+        width: '100%'
+    }
 });
 
 /**
@@ -21,63 +21,63 @@ const styles: any = () => ({
  */
 class Paper extends React.Component<PaperProps, any> {
 
-  static propTypes: PropTypes.InferProps<PaperProps>;
-  static defaultProps: PropTypes.InferProps<PaperProps>;
+    static propTypes: PropTypes.InferProps<PaperProps>;
+    static defaultProps: PropTypes.InferProps<PaperProps>;
 
-  render(): JSX.Element {
-    const {
-      classes,
-      theme,
-      elevation,
-      square,
-      variant,
-      palette,
-      paddingSpacing,
-      children
-    } = this.props;
-    const styleProperties: any = {};
-    const innerBoxStyleProperties: any = {};
-    if (palette) {
-      const { color, backgroundColor } = palette;
-      if (color) {
-        const { colorHue, colorShade } = color;
-        styleProperties.color = findColor(colorHue, colorShade, theme);
-      }
-      if (backgroundColor) {
-        const { colorHue, colorShade } = backgroundColor;
-        styleProperties.backgroundColor = findColor(colorHue, colorShade, theme);
-      }
+    render(): JSX.Element {
+        const {
+            classes,
+            theme,
+            elevation,
+            square,
+            variant,
+            palette,
+            paddingSpacing,
+            children
+        } = this.props;
+        const styleProperties: any = {};
+        const innerBoxStyleProperties: any = {};
+        if (palette) {
+            const { color, backgroundColor } = palette;
+            if (color) {
+                const { colorHue, colorShade } = color;
+                styleProperties.color = findColor(colorHue, colorShade, theme);
+            }
+            if (backgroundColor) {
+                const { colorHue, colorShade } = backgroundColor;
+                styleProperties.backgroundColor = findColor(colorHue, colorShade, theme);
+            }
+        }
+        if (paddingSpacing) {
+            const validSpacing: any = pickWithValues(paddingSpacing);
+            if (!isEmpty(validSpacing)) {
+                forOwn(validSpacing, (value, prop) => {
+                    innerBoxStyleProperties[prop] = theme!.spacing(parseInt(value));
+                });
+            }
+        }
+        return (
+            <PaperMUI
+                className={classes.root}
+                elevation={parseInt((elevation as any))}
+                style={styleProperties}
+                {...pickWithValues({ square, variant })}
+            >
+                <div style={innerBoxStyleProperties}>
+                    {children}
+                </div>
+            </PaperMUI>
+        );
     }
-    if (paddingSpacing) {
-      const validSpacing: any = pickWithValues(paddingSpacing);
-      if (!isEmpty(validSpacing)) {
-        forOwn(validSpacing, (value, prop) => {
-          innerBoxStyleProperties[prop] = theme!.spacing(parseInt(value));
-        });
-      }
-    }
-    return (
-      <PaperMUI
-        className={classes.root}
-        elevation={parseInt((elevation as any))}
-        style={styleProperties}
-        {...pickWithValues({square, variant})}
-      >
-        <div style={innerBoxStyleProperties}>
-          {children}
-        </div>
-      </PaperMUI>
-    );
-  }
 }
 
 Paper.propTypes = PaperTypes;
 
 Paper.defaultProps = {
-  elevation: '1',
-  square: false,
-  variant: 'elevation',
-  children: [<span />]
+    elevation: '1',
+    square: false,
+    variant: 'elevation',
+    children: [<span/>]
 };
 
-export default withStyles(styles, {withTheme: true})(Paper);
+export default withStyles(styles, { withTheme: true })(Paper);

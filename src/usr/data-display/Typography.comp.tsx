@@ -12,48 +12,48 @@ import { TypographyProps, TypographyTypes } from './Typography.props';
  */
 class Typography extends React.Component<TypographyProps, any> {
 
-  static propTypes: PropTypes.InferProps<TypographyProps>;
-  static defaultProps: PropTypes.InferProps<TypographyProps>;
+    static propTypes: PropTypes.InferProps<TypographyProps>;
+    static defaultProps: PropTypes.InferProps<TypographyProps>;
 
-  render(): JSX.Element {
-    const {
-      align,
-      color,
-      display,
-      gutterBottom,
-      noWrap,
-      paragraph,
-      variant,
-      letterSpacing,
-      text
-    } = this.props;
-    const muiTypographyProps =
-      pickWithValues({ align, color, display, gutterBottom, noWrap, paragraph, variant, text });
-    let spanStyle: any = {};
-    if (letterSpacing) {
-      spanStyle.letterSpacing = letterSpacing;
+    render(): JSX.Element {
+        const {
+            align,
+            color,
+            display,
+            gutterBottom,
+            noWrap,
+            paragraph,
+            variant,
+            letterSpacing,
+            text
+        } = this.props;
+        const muiTypographyProps =
+            pickWithValues({ align, color, display, gutterBottom, noWrap, paragraph, variant, text });
+        let spanStyle: any = {};
+        if (letterSpacing) {
+            spanStyle.letterSpacing = letterSpacing;
+        }
+        return (
+            <TypographyMUI
+                {...muiTypographyProps}
+            >
+                <span style={spanStyle}>{text}</span>
+            </TypographyMUI>
+        );
     }
-    return (
-      <TypographyMUI
-        {...muiTypographyProps}
-      >
-        <span style={spanStyle} >{text}</span>
-      </TypographyMUI>
-    );
-  }
 }
 
 Typography.propTypes = TypographyTypes;
 
 Typography.defaultProps = {
-  align: 'inherit',
-  color: 'initial',
-  display: 'initial',
-  gutterBottom: false,
-  noWrap: false,
-  paragraph: false,
-  variant: 'body1',
-  text: 'Text here'
+    align: 'inherit',
+    color: 'initial',
+    display: 'initial',
+    gutterBottom: false,
+    noWrap: false,
+    paragraph: false,
+    variant: 'body1',
+    text: 'Text here'
 };
 
 export default Typography;

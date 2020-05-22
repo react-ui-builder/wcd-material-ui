@@ -15,8 +15,10 @@ import { DateTimePickerProps, DateTimePickerTypes } from './DateTimePicker.props
  */
 
 const DateTimePicker = (props: DateTimePickerProps): JSX.Element => {
-    const { autoOk, format, initialDate, label, variant, disabled, allowKeyboard,
-        allowTextInput, orientation, isTimePicker, onChange} = props;
+    const {
+        autoOk, format, initialDate, label, variant, disabled, allowKeyboard,
+        allowTextInput, orientation, isTimePicker, onChange
+    } = props;
     const initialValue = initialDate ? new Date(initialDate) : new Date();
 
     const [selectedDate, setSelectedDate] = React.useState<Date | null>(

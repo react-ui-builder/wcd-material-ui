@@ -1,10 +1,6 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import * as _ from "lodash";
-import ButtonMUI from '@material-ui/core/Button';
-import ButtonGroupMUI from '@material-ui/core/ButtonGroup';
-import ButtonCircularProgress from '../a_lib/components/ButtonCircularProgress';
-import pickWithValues from '../a_lib/utils/pickWithValues';
 import { CardProps, CardTypes } from './Card.props';
 
 
@@ -40,14 +36,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 /**
- * _From Material UI documentation_
- *
- * Card
- *
  * Cards contain content and actions about a single subject.
- *
  * Cards are surfaces that display content and actions on a single topic.
- *
  * They should be easy to scan for relevant and actionable information. Elements, like text and images, should be placed on them in a way that clearly indicates hierarchy.
  */
 const Card = (props: CardProps) => {
@@ -70,11 +60,11 @@ const Card = (props: CardProps) => {
         headerElement = (
             <CardHeader
                 avatar={(header?.avatar?.src || header?.avatar?.defaultLetter) &&
-                    <AvatarMUI
-                        src={header?.avatar && header?.avatar.src}
-                    >
-                        {header?.avatar && header.avatar.defaultLetter}
-                    </AvatarMUI>
+                <AvatarMUI
+                  src={header?.avatar && header?.avatar.src}
+                >
+                    {header?.avatar && header.avatar.defaultLetter}
+                </AvatarMUI>
                 }
                 action={props.header?.action}
                 title={props.header?.title}

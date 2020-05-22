@@ -8,26 +8,26 @@ import { DivWithStyleProps, DivWithStyleTypes } from './DivWithStyle.props';
  */
 class DivWithStyle extends React.Component<DivWithStyleProps, any> {
 
-  static propTypes: PropTypes.InferProps<DivWithStyleProps>;
-  static defaultProps: PropTypes.InferProps<DivWithStyleProps>;
+    static propTypes: PropTypes.InferProps<DivWithStyleProps>;
+    static defaultProps: PropTypes.InferProps<DivWithStyleProps>;
 
-  render() {
-    const { children, style } = this.props;
-    return (
-      <div style={style}>
-        {children}
-      </div>
-    );
-  }
+    render() {
+        const { children, style } = this.props;
+        return (
+            <div style={style}>
+                {children}
+            </div>
+        );
+    }
 }
 
 DivWithStyle.propTypes = DivWithStyleTypes;
 
 DivWithStyle.defaultProps = {
-  style: {
-    display: 'flex',
-  },
-  children: [<span/>],
+    style: {
+        display: 'flex',
+    },
+    children: [<span/>],
 };
 
 export default DivWithStyle;

@@ -7,7 +7,7 @@ import pickWithValues from '../a_lib/utils/pickWithValues';
 import { TextFieldProps, TextFieldTypes } from './TextField.props';
 
 interface TextFieldState {
-  localInputText?: string;
+    localInputText?: string;
 }
 
 /**
@@ -15,102 +15,102 @@ interface TextFieldState {
  */
 class TextField extends React.Component<TextFieldProps, TextFieldState> {
 
-  static propTypes: PropTypes.InferProps<TextFieldProps>;
-  static defaultProps: PropTypes.InferProps<TextFieldProps>;
+    static propTypes: PropTypes.InferProps<TextFieldProps>;
+    static defaultProps: PropTypes.InferProps<TextFieldProps>;
 
-  debouncedChange?: any;
+    debouncedChange?: any;
 
-  constructor(props: TextFieldProps) {
-    super(props);
-    const { value, debounceDelay } = this.props;
-    this.state = {
-      localInputText: value,
+    constructor(props: TextFieldProps) {
+        super(props);
+        const { value, debounceDelay } = this.props;
+        this.state = {
+            localInputText: value,
+        };
+        this.setUpOnChange(debounceDelay);
+    }
+
+    componentDidUpdate(prevProps: TextFieldProps, prevState: TextFieldState) {
+        const { value, debounceDelay } = this.props;
+        const { localInputText } = this.state;
+        if (value !== prevProps.value && localInputText !== value) {
+            this.setState({
+                localInputText: value
+            });
+        }
+        if (debounceDelay !== prevProps.debounceDelay) {
+            this.setUpOnChange(debounceDelay);
+        }
+    }
+
+    setUpOnChange = (debounceDelay?: number): void => {
+        if (typeof debounceDelay !== 'undefined' && debounceDelay > 0) {
+            this.debouncedChange = debounce((value: string) => {
+                if (this.props.onChange) {
+                    this.props.onChange(value);
+                }
+            }, debounceDelay);
+        } else {
+            this.debouncedChange = (value: string) => {
+                if (this.props.onChange) {
+                    this.props.onChange(value);
+                }
+            };
+        }
     };
-    this.setUpOnChange(debounceDelay);
-  }
 
-  componentDidUpdate(prevProps: TextFieldProps, prevState:TextFieldState) {
-    const { value, debounceDelay } = this.props;
-    const { localInputText } = this.state;
-    if (value !== prevProps.value && localInputText !== value) {
-      this.setState({
-        localInputText: value
-      });
-    }
-    if (debounceDelay !== prevProps.debounceDelay) {
-      this.setUpOnChange(debounceDelay);
-    }
-  }
+    handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        this.setState({
+            localInputText: e.currentTarget.value
+        });
+        this.debouncedChange(e.currentTarget.value);
+    };
 
-  setUpOnChange = (debounceDelay?: number): void => {
-    if (typeof debounceDelay !== 'undefined' && debounceDelay > 0) {
-      this.debouncedChange = debounce((value: string) => {
-        if (this.props.onChange) {
-          this.props.onChange(value);
+    render(): JSX.Element {
+        const { localInputText } = this.state;
+        const { disabled, error, helperText, required, label, inputControl, formControl, multilineControl } = this.props;
+        let mainProps: any = pickWithValues({ disabled, error, required, label, helperText });
+        let inputProps: any = {};
+        if (inputControl) {
+            mainProps = { ...mainProps, ...pickWithValues(inputControl) };
         }
-      }, debounceDelay);
-    } else {
-      this.debouncedChange = (value: string) => {
-        if (this.props.onChange) {
-          this.props.onChange(value);
+        if (formControl) {
+            const { color, fullWidth, margin, placeholder, variant, startAdornment, endAdornment } = formControl;
+            mainProps = { ...mainProps, ...pickWithValues({ color, fullWidth, margin, placeholder, variant }) };
+            if (startAdornment) {
+                inputProps.startAdornment = (
+                    <InputAdornmentMUI position="start">{startAdornment}</InputAdornmentMUI>
+                );
+            }
+            if (endAdornment) {
+                inputProps.endAdornment = (
+                    <InputAdornmentMUI position="end">{endAdornment}</InputAdornmentMUI>
+                );
+            }
         }
-      };
-    }
-  };
-
-  handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({
-      localInputText: e.currentTarget.value
-    });
-    this.debouncedChange(e.currentTarget.value);
-  };
-
-  render(): JSX.Element {
-    const { localInputText } = this.state;
-    const { disabled, error, helperText, required, label, inputControl, formControl, multilineControl } = this.props;
-    let mainProps: any = pickWithValues({ disabled, error, required, label, helperText });
-    let inputProps: any = {};
-    if (inputControl) {
-      mainProps = {...mainProps, ...pickWithValues(inputControl)};
-    }
-    if (formControl) {
-      const { color, fullWidth, margin, placeholder, variant, startAdornment, endAdornment } = formControl;
-      mainProps = {...mainProps, ...pickWithValues({color, fullWidth, margin, placeholder, variant})};
-      if (startAdornment) {
-        inputProps.startAdornment = (
-          <InputAdornmentMUI position="start">{startAdornment}</InputAdornmentMUI>
+        if (multilineControl) {
+            mainProps = { ...mainProps, ...pickWithValues(multilineControl) };
+        }
+        return (
+            <TextFieldMUI
+                value={localInputText || ''}
+                InputProps={inputProps}
+                {...mainProps}
+                onChange={this.handleChange}
+            />
         );
-      }
-      if (endAdornment) {
-        inputProps.endAdornment = (
-          <InputAdornmentMUI position="end">{endAdornment}</InputAdornmentMUI>
-        );
-      }
     }
-    if (multilineControl) {
-      mainProps = {...mainProps, ...pickWithValues(multilineControl)};
-    }
-    return (
-      <TextFieldMUI
-        value={localInputText || ''}
-        InputProps={inputProps}
-        {...mainProps}
-        onChange={this.handleChange}
-      />
-    );
-  }
 }
 
 TextField.propTypes = TextFieldTypes;
 
 TextField.defaultProps = {
-  debounceDelay: 300,
-  inputControl: {
-    type: 'text',
-  },
-  formControl: {
-    margin: 'none',
-  }
+    debounceDelay: 300,
+    inputControl: {
+        type: 'text',
+    },
+    formControl: {
+        margin: 'none',
+    }
 };
 
 export default TextField;

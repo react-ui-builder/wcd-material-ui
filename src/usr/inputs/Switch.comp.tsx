@@ -12,41 +12,41 @@ import { SwitchProps, SwitchTypes } from './Switch.props';
  */
 class Switch extends React.Component<SwitchProps, any> {
 
-  static propTypes: PropTypes.InferProps<SwitchProps>;
-  static defaultProps: PropTypes.InferProps<SwitchProps>;
+    static propTypes: PropTypes.InferProps<SwitchProps>;
+    static defaultProps: PropTypes.InferProps<SwitchProps>;
 
-  handleChange = (e: React.MouseEvent<HTMLInputElement>) => {
-    const checked = e.currentTarget.checked;
-    const { value } = this.props;
-    if (this.props.onChange) {
-      this.props.onChange({ checked, value });
-    }
-  };
-
-  render(): JSX.Element {
-    const { disabled, label, labelPlacement } = this.props;
-    const { value, checked, id, color,  required, size } = this.props;
-    const muiFormControlLabelProps: any = pickWithValues({ disabled, label, labelPlacement });
-    const muiSwitchProps: any = pickWithValues({ value, checked, id, color, required });
-    if (size) {
-      muiSwitchProps.size = size;
-    }
-    return (
-      <FormControlLabelMUI
-        control={
-          <SwitchMUI {...muiSwitchProps} onChange={this.handleChange} />
+    handleChange = (e: React.MouseEvent<HTMLInputElement>) => {
+        const checked = e.currentTarget.checked;
+        const { value } = this.props;
+        if (this.props.onChange) {
+            this.props.onChange({ checked, value });
         }
-        {...muiFormControlLabelProps}
-      />
-    );
-  }
+    };
+
+    render(): JSX.Element {
+        const { disabled, label, labelPlacement } = this.props;
+        const { value, checked, id, color, required, size } = this.props;
+        const muiFormControlLabelProps: any = pickWithValues({ disabled, label, labelPlacement });
+        const muiSwitchProps: any = pickWithValues({ value, checked, id, color, required });
+        if (size) {
+            muiSwitchProps.size = size;
+        }
+        return (
+            <FormControlLabelMUI
+                control={
+                    <SwitchMUI {...muiSwitchProps} onChange={this.handleChange}/>
+                }
+                {...muiFormControlLabelProps}
+            />
+        );
+    }
 }
 
 Switch.propTypes = SwitchTypes;
 
 Switch.defaultProps = {
-  label: 'Switch',
-  color: 'primary'
+    label: 'Switch',
+    color: 'primary'
 };
 
 export default Switch;

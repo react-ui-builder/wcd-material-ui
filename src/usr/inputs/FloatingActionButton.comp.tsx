@@ -7,12 +7,12 @@ import ButtonCircularProgress from '../a_lib/components/ButtonCircularProgress';
 import { FloatingActionButtonProps, FloatingActionButtonTypes } from './FloatingActionButton.props';
 
 const styles: any = (theme: Theme) => ({
-  button: {
-    position: 'relative',
-  },
-  label: {
-    marginLeft: theme.spacing(1),
-  }
+    button: {
+        position: 'relative',
+    },
+    label: {
+        marginLeft: theme.spacing(1),
+    }
 });
 
 /**
@@ -20,52 +20,51 @@ const styles: any = (theme: Theme) => ({
  */
 class FloatingActionButton extends React.Component<FloatingActionButtonProps, any> {
 
-  static propTypes: PropTypes.InferProps<FloatingActionButtonProps>;
-  static defaultProps: PropTypes.InferProps<FloatingActionButtonProps>;
+    static propTypes: PropTypes.InferProps<FloatingActionButtonProps>;
+    static defaultProps: PropTypes.InferProps<FloatingActionButtonProps>;
 
-  handleButtonClick = (e: React.MouseEvent<HTMLElement>) => {
-    if (e) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
-    if (this.props.onClick) {
-      this.props.onClick();
-    }
-  };
+    handleButtonClick = (e: React.MouseEvent<HTMLElement>) => {
+        if (e) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+        if (this.props.onClick) {
+            this.props.onClick();
+        }
+    };
 
-  render() {
-    const { classes, label, color, variant, disabled, icon, size, href, loading } = this.props;
-    const muiButtonProps: any = pickWithValues({variant, color, disabled, size, href});
-    let labelElement: JSX.Element | null = null;
-    if (label) {
-      if (icon) {
-        labelElement = <span className={classes.label}>{label}</span>;
-      } else {
-        labelElement = <span>{label}</span>;
-      }
+    render() {
+        const { classes, label, color, variant, disabled, icon, size, href, loading } = this.props;
+        const muiButtonProps: any = pickWithValues({ variant, color, disabled, size, href });
+        let labelElement: JSX.Element | null = null;
+        if (label) {
+            if (icon) {
+                labelElement = <span className={classes.label}>{label}</span>;
+            } else {
+                labelElement = <span>{label}</span>;
+            }
+        }
+        if (loading) {
+            muiButtonProps.disabled = true;
+        }
+        return (
+            <FabMUI
+                className={classes.button}
+                onClick={this.handleButtonClick}
+                {...muiButtonProps}
+            >
+                {icon}
+                {labelElement}
+                {loading && (
+                    <ButtonCircularProgress size={size}/>
+                )}
+            </FabMUI>
+        );
     }
-    if (loading) {
-      muiButtonProps.disabled = true;
-    }
-    return (
-      <FabMUI
-        className={classes.button}
-        onClick={this.handleButtonClick}
-        {...muiButtonProps}
-      >
-        {icon}
-        {labelElement}
-        {loading && (
-          <ButtonCircularProgress size={size} />
-        )}
-      </FabMUI>
-    );
-  }
 }
 
 FloatingActionButton.propTypes = FloatingActionButtonTypes;
 
-FloatingActionButton.defaultProps = {
-};
+FloatingActionButton.defaultProps = {};
 
 export default withStyles(styles)(FloatingActionButton);

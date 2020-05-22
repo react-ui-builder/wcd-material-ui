@@ -25,7 +25,7 @@ export const ExpansionPanelTypes: PropTypes.InferProps<ExpansionPanelProps> = {
      */
     children: PropTypes.node,
     /**
-     * 	Override or extend the styles applied to the component. See CSS API below for more details.
+     *    Override or extend the styles applied to the component. See CSS API below for more details.
      */
     classes: PropTypes.object,
     /**
@@ -33,7 +33,7 @@ export const ExpansionPanelTypes: PropTypes.InferProps<ExpansionPanelProps> = {
      */
     defaultExpanded: PropTypes.bool,
     /**
-     * 	If true, the panel will be displayed in a disabled state.
+     *    If true, the panel will be displayed in a disabled state.
      */
     disabled: PropTypes.bool,
     /**
@@ -41,7 +41,7 @@ export const ExpansionPanelTypes: PropTypes.InferProps<ExpansionPanelProps> = {
      */
     expanded: PropTypes.bool,
     /**
-     * 	Callback fired when the expand/collapse state is changed.
+     *    Callback fired when the expand/collapse state is changed.
      *
      *     Signature:
      *     function(event: object, expanded: boolean) => void
@@ -50,7 +50,7 @@ export const ExpansionPanelTypes: PropTypes.InferProps<ExpansionPanelProps> = {
      */
     onChange: PropTypes.func,
     /**
-     * 	If true, rounded corners are disabled.
+     *    If true, rounded corners are disabled.
      */
     square: PropTypes.bool,
     /**
