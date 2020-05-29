@@ -11,7 +11,7 @@ export interface FloatingActionButtonProps {
     size?: '' | 'small' | 'medium' | 'large';
     href?: string;
     loading?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export const FloatingActionButtonTypes: PropTypes.InferProps<FloatingActionButtonProps> = {

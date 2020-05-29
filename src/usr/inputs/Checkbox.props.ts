@@ -10,7 +10,7 @@ export interface CheckboxProps {
     color?: '' | 'default' | 'primary' | 'secondary';
     indeterminate?: boolean;
     required?: boolean;
-    onChange: (options: { checked?: boolean, value?: any, id?: string }) => void;
+    onChange?: (options: { checked?: boolean, value?: any, id?: string }) => void;
 }
 
 export const CheckboxTypes: PropTypes.InferProps<CheckboxProps> = {

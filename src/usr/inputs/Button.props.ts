@@ -19,8 +19,8 @@ export interface ButtonProps {
         disabled?: boolean;
         selected?: boolean;
     }[];
-    onClick: () => void;
-    onMenuItemClick: (options: { id?: string, href?: string }) => void;
+    onClick?: () => void;
+    onMenuItemClick?: (options: { id?: string, href?: string }) => void;
 }
 
 export const ButtonTypes: PropTypes.InferProps<ButtonProps> = {

@@ -32,7 +32,7 @@ export interface CardProps {
     content?: JSX.Element;
     variant?: 'outlined' | 'elevation';
     fullWidth?: boolean;
-    onClick: (buttonProps: { id?: string, href?: string }) => void;
+    onClick?: (buttonProps: { id?: string, href?: string }) => void;
 }
 
 export const CardHeaderTypes: PropTypes.InferProps<CardHeaderProps> = {

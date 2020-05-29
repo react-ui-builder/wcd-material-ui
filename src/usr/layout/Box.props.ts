@@ -30,7 +30,7 @@ export interface BoxProps {
         '20' | '21' | '22' | '23' |
         '24';
     typography?: TypographyProps;
-    children: ReactNode[];
+    children?: ReactNode[];
 }
 
 export const BoxTypes = {

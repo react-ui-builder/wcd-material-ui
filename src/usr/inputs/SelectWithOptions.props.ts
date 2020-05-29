@@ -27,7 +27,7 @@ export interface SelectWithOptionsProps {
         label?: string;
         disabled?: boolean;
     }[],
-    onChange: (value: string) => void;
+    onChange?: (value: string) => void;
 }
 
 export const SelectWithOptionsTypes: PropTypes.InferProps<SelectWithOptionsProps> = {

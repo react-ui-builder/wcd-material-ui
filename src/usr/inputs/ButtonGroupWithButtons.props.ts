@@ -15,7 +15,7 @@ export interface ButtonGroupWithButtonsProps {
     variant?: '' | 'text' | 'outlined' | 'contained';
     size?: '' | 'small' | 'medium' | 'large';
     fullWidth?: boolean;
-    onClick: (buttonProps: { id?: string, href?: string }) => void;
+    onClick?: (buttonProps: { id?: string, href?: string }) => void;
 }
 
 export const ButtonGroupWithButtonsTypes: PropTypes.InferProps<ButtonGroupWithButtonsProps> = {

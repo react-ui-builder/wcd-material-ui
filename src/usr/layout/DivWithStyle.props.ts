@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export interface DivWithStyleProps {
     style?: any;
-    children: ReactNode[];
+    children?: ReactNode[];
 }
 
 export const DivWithStyleTypes: PropTypes.InferProps<DivWithStyleProps> = {

@@ -11,10 +11,10 @@ export interface ExpansionPanelProps {
     onChange?: () => any;
     square?: boolean;
 
-    areaControls: string;
-    detailsText: string;
-    id: string;
-    summaryText: string;
+    areaControls?: string;
+    detailsText?: string;
+    id?: string;
+    summaryText?: string;
 
     theme?: Theme;
 }

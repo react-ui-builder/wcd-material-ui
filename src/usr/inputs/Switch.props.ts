@@ -10,7 +10,7 @@ export interface SwitchProps {
     color?: '' | 'default' | 'primary' | 'secondary';
     required?: boolean;
     size?: '' | 'medium' | 'small';
-    onChange: (options: { checked?: boolean, value?: any }) => void;
+    onChange?: (options: { checked?: boolean, value?: any }) => void;
 }
 
 export const SwitchTypes: PropTypes.InferProps<SwitchProps> = {

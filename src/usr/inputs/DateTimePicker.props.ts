@@ -10,8 +10,8 @@ export interface DateTimePickerProps {
     isTimePicker?: boolean;
     label?: string;
     orientation?: 'portrait' | 'landscape';
-    variant: 'inline' | 'dialog' | 'static';
-    onChange: (date: Date) => void;
+    variant?: 'inline' | 'dialog' | 'static';
+    onChange?: (date: Date) => void;
 }
 
 export const DateTimePickerTypes: PropTypes.InferProps<DateTimePickerProps> = {
