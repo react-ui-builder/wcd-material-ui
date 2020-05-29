@@ -1,51 +1,74 @@
-import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { Theme } from '@material-ui/core';
 
-export interface ExpansionPanelProps {
-    children?: any;
-    classes?: any;
-    defaultExpanded?: boolean;
-    disabled?: boolean;
-    expanded?: boolean;
-    onChange?: () => any;
-    square?: boolean;
-
-    areaControls: string;
-    detailsText: string;
+export interface PanelProps {
     id: string;
-    summaryText: string;
-
-    theme?: Theme;
+    action?: {
+        divider?: boolean;
+        buttons?: JSX.Element[];
+    };
+    disabled?: boolean;
+    details: JSX.Element;
+    summary: JSX.Element;
 }
 
-export const ExpansionPanelTypes: PropTypes.InferProps<ExpansionPanelProps> = {
+export interface ExpansionPanelProps {
+    classes?: any;
+    noMargins?: boolean;
+    onChange?: (id: string, expanded: boolean) => any;
+    square?: boolean;
+    panels: PanelProps[];
+    theme?: Theme;
+    variant?: 'expansionPanel' | 'accordion';
+}
+
+export const PanelTypes: PropTypes.InferProps<PanelProps> = {
     /**
-     * The content of the expansion panel.
+     * ID
      */
-    children: PropTypes.node,
+    id: PropTypes.string.isRequired,
     /**
-     *    Override or extend the styles applied to the component. See CSS API below for more details.
+     * Actions configuration
      */
-    classes: PropTypes.object,
-    /**
-     * If true, expands the panel by default.
-     */
-    defaultExpanded: PropTypes.bool,
+    action: PropTypes.shape({
+        /**
+         * Divider before actions section
+         */
+        divider: PropTypes.bool,
+        /**
+         * Action Buttons
+         */
+        buttons: PropTypes.arrayOf(PropTypes.node),
+    }),
     /**
      *    If true, the panel will be displayed in a disabled state.
      */
     disabled: PropTypes.bool,
     /**
-     * If true, expands the panel, otherwise collapse it. Setting this prop enables control over the panel.
+     * Node to be shown on expanded area
      */
-    expanded: PropTypes.bool,
+    details: PropTypes.node,
+    /**
+     * Node to be shown on collapsed area
+     */
+    summary: PropTypes.node,
+};
+
+export const ExpansionPanelTypes: PropTypes.InferProps<ExpansionPanelProps> = {
+    /**
+     *    Override or extend the styles applied to the component. See CSS API below for more details.
+     */
+    classes: PropTypes.object,
+    /**
+     * if true - no top/bottom margins between panels
+     */
+    noMargins: PropTypes.bool,
     /**
      *    Callback fired when the expand/collapse state is changed.
      *
      *     Signature:
-     *     function(event: object, expanded: boolean) => void
-     *     event: The event source of the callback.
+     *     function(id: string, expanded: boolean) => void
+     *     id: panel id,
      *     expanded: The expanded state of the panel.
      */
     onChange: PropTypes.func,
@@ -54,22 +77,15 @@ export const ExpansionPanelTypes: PropTypes.InferProps<ExpansionPanelProps> = {
      */
     square: PropTypes.bool,
     /**
-     * area-controls value
+     * Panels
+     */
+    panels: PropTypes.arrayOf(PropTypes.shape(PanelTypes)),
+    /**
+     * Panel variants
+     * 'individual' - each panel has own expand control
+     * 'accordion' - accordion: if any panel is open, all other are closed
+     * 'noMarginsAccordion' - squared accordion without margins between nodes
+     */
+    variant: PropTypes.oneOf(['expansionPanel', 'accordion'])
 
-     id: string;
-
-     */
-    areaControls: PropTypes.string.isRequired,
-    /**
-     * ID
-     */
-    id: PropTypes.string.isRequired,
-    /**
-     * Text to be shown on expanded area
-     */
-    detailsText: PropTypes.string.isRequired,
-    /**
-     * Text to be shown on collapsed area
-     */
-    summaryText: PropTypes.string.isRequired,
 };
