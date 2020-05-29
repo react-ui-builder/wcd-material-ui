@@ -2,7 +2,7 @@
 
 > Current version of the library: `1.0.0`
 
-#### Watch: [Introduction video]()
+#### Watch: [Introduction video](https://youtu.be/jeZyOjZKxYc)
 
 ## Download project template:
 > Choose the appropriate boilerplate for your new project and download it to your local disk. 
