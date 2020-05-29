@@ -67,7 +67,9 @@ class SelectWithOptions extends React.Component<SelectWithOptionsProps, SelectWi
         this.setState({
             selectedValueLocal: e.target.value,
         });
-        this.props.onChange(e.currentTarget.value);
+        if (this.props.onChange) {
+            this.props.onChange(e.currentTarget.value);
+        }
     };
 
     render(): JSX.Element {

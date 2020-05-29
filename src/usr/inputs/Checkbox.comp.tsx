@@ -16,7 +16,9 @@ class Checkbox extends React.Component<CheckboxProps, any> {
     handleChange = (e: React.MouseEvent<HTMLInputElement>) => {
         const checked = e.currentTarget.checked;
         const { value, id } = this.props;
-        this.props.onChange({ checked, value, id });
+        if (this.props.onChange) {
+            this.props.onChange({ checked, value, id });
+        }
     };
 
     render() {
