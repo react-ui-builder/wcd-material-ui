@@ -8,8 +8,8 @@ export interface PanelProps {
         buttons?: JSX.Element[];
     };
     disabled?: boolean;
-    details: JSX.Element;
-    summary: JSX.Element;
+    details?: JSX.Element;
+    summary?: JSX.Element;
 }
 
 export interface ExpansionPanelProps {
@@ -17,7 +17,7 @@ export interface ExpansionPanelProps {
     noMargins?: boolean;
     onChange?: (id: string, expanded: boolean) => any;
     square?: boolean;
-    panels: PanelProps[];
+    panels?: PanelProps[];
     theme?: Theme;
     variant?: 'expansionPanel' | 'accordion';
 }
