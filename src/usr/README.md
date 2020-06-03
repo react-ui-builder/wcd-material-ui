@@ -2,18 +2,23 @@
 
 > Current version of the library: `1.0.0`
 
-#### Watch: [Introduction video](https://youtu.be/jeZyOjZKxYc)
+### Watch video tutorial
 
-## Download project template:
-> Choose the appropriate boilerplate for your new project and download it to your local disk. 
+* [Introduction video](https://youtu.be/jeZyOjZKxYc)
 
-#### 1. Create React App template project: 
-* [Download](https://github.com/react-ui-builder/material-ui-cra-boilerplate/archive/master.zip)
-* [Source Code](https://github.com/react-ui-builder/material-ui-cra-boilerplate)
+### Download project template:
 
-## Contribution
+* Choose the appropriate boilerplate for your new project and download it to your local disk. 
+
+| Framework | Boilerplate | Repository |
+|---|---|---|
+| Create React App | [Download](https://github.com/react-ui-builder/material-ui-cra-boilerplate/archive/master.zip)  | [Source Code](https://github.com/react-ui-builder/material-ui-cra-boilerplate) |
+
+### Contribute
 
 * We will be happy if you create a new PR for this library in GitHub repo: [wcd-material-ui](https://github.com/react-ui-builder/wcd-material-ui).
+
+## Community
 
 * If you need any help, don't be afraid to speak up!
 
